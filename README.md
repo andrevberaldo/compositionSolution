@@ -1,1 +1,1 @@
-# compositionSolution
+Exercise to pratice the composition pattern employment 
