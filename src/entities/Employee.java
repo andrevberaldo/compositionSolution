@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Employee {
@@ -49,15 +50,17 @@ public class Employee {
 	}
 	
 	public double getIncome(int month, int year) {
-		double tempSalary = 0;
-		for (HourContract c : contracts) {
-			if (c.getDate().getMonth() == month && c.getDate().getYear() == year) {
-				tempSalary += c.totalValue();
+		Calendar cal = Calendar.getInstance();
+		double monthIncome = 0;
+		for(HourContract c : contracts) {
+			cal.setTime(c.getDate());  
+			if (cal.get(Calendar.MONTH) == month && cal.get(Calendar.YEAR) == year) {
+				monthIncome += c.totalValue();
 			}
+			
 		}
 		
-		tempSalary += this.baseSalary;
-		return tempSalary;
+		return monthIncome + baseSalary;
 	}
 	
 	

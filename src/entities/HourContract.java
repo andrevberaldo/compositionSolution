@@ -1,5 +1,7 @@
 package entities;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HourContract {
@@ -9,9 +11,10 @@ public class HourContract {
 	private Double valuePerHour;
 	private Integer hours;
 	
-	public HourContract(Integer id, Date date, Double valuePerHour, Integer hours) {
+	public HourContract(Integer id, String date, Double valuePerHour, Integer hours) throws ParseException {
+		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
 		this.id = id;
-		this.date = date;
+		this.date = sdf1.parse(date);
 		this.valuePerHour = valuePerHour;
 		this.hours = hours;
 	}
