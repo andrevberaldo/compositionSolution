@@ -54,14 +54,21 @@ public class Employee {
 		double monthIncome = 0;
 		for(HourContract c : contracts) {
 			cal.setTime(c.getDate());  
-			if (cal.get(Calendar.MONTH) == month && cal.get(Calendar.YEAR) == year) {
+			int monthT = cal.get(Calendar.MONTH);
+			int yearT = cal.get(Calendar.YEAR);
+			if ((monthT+1) == month && yearT == year) {
 				monthIncome += c.totalValue();
 			}
 			
 		}
 		
-		return monthIncome + baseSalary;
+		return (monthIncome + this.baseSalary);
 	}
 	
+	public void getContracts() {
+		for (HourContract c : contracts) {
+			System.out.println(c);
+		}
+	}
 	
 }
